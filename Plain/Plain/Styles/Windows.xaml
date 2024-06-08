@@ -6,5 +6,6 @@
         <Setter Property="WindowStyle" Value="None"></Setter>
         <Setter Property="ResizeMode" Value="CanResize"></Setter>
         <Setter Property="AllowDrop" Value="True"></Setter>
+        <Setter Property="UseLayoutRounding" Value="True"></Setter>
     </Style>
 </ResourceDictionary>

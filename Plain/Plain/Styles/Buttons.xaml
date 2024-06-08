@@ -7,7 +7,7 @@
     <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
         <Border Cursor="Hand" 
                      Background="{TemplateBinding Background}"
-                     BorderBrush="Transparent" 
+                     BorderBrush="Transparent"
                      BorderThickness="{TemplateBinding BorderThickness}" 
                      CornerRadius="5">
             <ContentPresenter x:Name="content" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -16,7 +16,7 @@
     </ControlTemplate>
     
     
-    <Style TargetType="Button" x:Key="WindowButton">
+    <Style TargetType="Button" x:Key="WindowButtonBase">
         <Setter Property="Height" Value="50"></Setter>
         <Setter Property="Width" Value="50"></Setter>
         <Setter Property="DockPanel.Dock" Value="Right"></Setter>
@@ -25,24 +25,48 @@
         <Setter Property="Template" Value="{StaticResource ButtonTemplate}"></Setter>
     </Style>
 
-    <Style TargetType="Button" BasedOn="{StaticResource WindowButton}" x:Key="ModesButton">
-        <Setter Property="Height" Value="100"></Setter>
+    <Style TargetType="Button" BasedOn="{StaticResource WindowButtonBase}" x:Key="WindowButton">
+        <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"></Setter>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <ScaleTransform ScaleX="1" ScaleY="1"></ScaleTransform>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource WindowButtonMouseEnter}"></BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource WindowButtonMouseLeave}"></BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource WindowButtonBase}" x:Key="ModesButton">
+        <Setter Property="Height" Value="125"></Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="0"></DropShadowEffect>
+            </Setter.Value>
+        </Setter>
         <Style.Triggers>
             <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=LightMode}" Value="False">
                 <DataTrigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource DarkModeIconAnimation}"/>
+                    <BeginStoryboard Storyboard="{StaticResource DarkModeShadowAnimation}"></BeginStoryboard>
                 </DataTrigger.EnterActions>
                 <DataTrigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource LightModeIconAnimation}"/>
+                    <BeginStoryboard Storyboard="{StaticResource LightModeShadowAnimation}"></BeginStoryboard>
                 </DataTrigger.ExitActions>
             </DataTrigger>
-            <!--FUNCIOAN HACER ANIMAACIÓN-->
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Effect">
-                    <Setter.Value>
-                        <DropShadowEffect></DropShadowEffect>
-                    </Setter.Value>
-                </Setter>
+                <Trigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource DropShadowMouseEnterIcon}"/>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource DropShadowMouseLeaveIcon}"/>
+                </Trigger.ExitActions>
             </Trigger>
         </Style.Triggers>
     </Style> 

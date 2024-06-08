@@ -1,0 +1,55 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:properties="clr-namespace:Plain.Properties">
+    <Style x:Key="BaseTextStyle" TargetType="TextBlock">
+        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+    </Style>
+    
+    <Style x:Key="TitleStyle" BasedOn="{StaticResource BaseTextStyle}" TargetType="TextBlock">
+        <Setter Property="TextAlignment" Value="Center"></Setter>
+        <Setter Property="FontFamily" Value="{StaticResource TitleFont}"></Setter>
+        <Setter Property="FontSize" Value="50"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=LightMode}" Value="False">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource DarkModeTitleAnimation}"/>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource LightModeTitleAnimation}"/>
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=LightMode}" Value="True">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource LightModeTitleAnimation}"/>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource DarkModeTitleAnimation}"/>
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="TextStyle" BasedOn="{StaticResource BaseTextStyle}" TargetType="TextBlock">
+        <Setter Property="TextAlignment" Value="Justify"></Setter>
+        <Setter Property="FontFamily" Value="{StaticResource TitleFont}"></Setter>
+        <Setter Property="FontSize" Value="30"></Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=LightMode}" Value="False">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource DarkModeTextAnimation}"/>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource LightModeTextAnimation}"/>
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Source={x:Static properties:Settings.Default}, Path=LightMode}" Value="True">
+                <DataTrigger.EnterActions>
+                    <BeginStoryboard Storyboard="{StaticResource LightModeTextAnimation}"/>
+                </DataTrigger.EnterActions>
+                <DataTrigger.ExitActions>
+                    <BeginStoryboard Storyboard="{StaticResource DarkModeTextAnimation}"/>
+                </DataTrigger.ExitActions>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

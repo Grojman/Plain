@@ -21,12 +21,33 @@
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+                <Image Source="/Resources/Images/Backgrounds/cloud_1.png" Style="{StaticResource DarkBackgroundStyle}"></Image>
+                <Image Source="/Resources/Images/Backgrounds/cloud_2.png" Style="{StaticResource DarkBackgroundStyle}"></Image>
+                <Image Source="/Resources/Images/Backgrounds/light_background.png" Style="{StaticResource LightBackgroundStyle}"></Image>
+
+                <!--<Image Source="/Resources/Images/Backgrounds/moon.png" Style="{StaticResource CenterDarkBackgroundStyle}"></Image>
+                <Image Source="/Resources/Images/Backgrounds/sun.png" Style="{StaticResource CenterLightBackgroundStyle}"></Image>-->
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <TextBlock Style="{StaticResource TitleStyle}">PLAIN</TextBlock>
+            </Grid>
             
             <DockPanel LastChildFill="False" Background="Transparent" MouseLeftButtonDown="ButtonNavBarPreviewMouseLeftButtonDown">
-                <Button Style="{StaticResource WindowButton}" Click="CloseWindow">Cerrar</Button>
-                <Button Style="{StaticResource WindowButton}" Click="MinimizeWindow">Minimizar</Button>
+                <Button Style="{StaticResource WindowButton}" Click="CloseWindow">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Resources/Icons/close_button.png" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor"></ImageBrush>
+                    </Button.Background>
+                </Button>
+                <Button Style="{StaticResource WindowButton}" Click="MinimizeWindow">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Resources/Icons/minimize_button.png"></ImageBrush>
+                    </Button.Background>
+                </Button>
                 <Button Style="{StaticResource ModesButton}" Click="ChangeWindowMode">
-                    <Image Source="/Resources/Images/modes.png">
+                    <Image Source="/Resources/Icons/modes.png" Style="{StaticResource ModeIconStyle}">
                         <Image.RenderTransform>
                             <TranslateTransform Y="0"></TranslateTransform>
                         </Image.RenderTransform>

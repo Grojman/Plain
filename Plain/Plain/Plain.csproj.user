@@ -7,6 +7,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Animations\Animations.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Borders.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Buttons.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Constants.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Grids.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Images.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\Windows.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
